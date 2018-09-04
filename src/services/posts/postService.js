@@ -4,8 +4,8 @@ let db = firebase.firestore();
 const settings = {timestampsInSnapshots: true};
 db.settings(settings);
 
-export function getPosts() {
-    return db.collection("posts").orderBy("date", "desc").get()
+export function getPosts(order, dir) {
+    return db.collection("posts").orderBy(order, dir).get()
 }
 
 export function incrementRating(doc, newRating) {

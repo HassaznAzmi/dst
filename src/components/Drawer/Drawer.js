@@ -8,61 +8,102 @@ import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
+import ListSubheader from "@material-ui/core/ListSubheader";
 import Timeline from "../Timeline";
 import Heading from "../Heading";
+import Footer from "../Footer";
 import "./Drawer.css";
 
 const styles = {
   list: {
-    width: 250
-  },
-  fullList: {
-    width: "auto"
+    width: 300
   }
 };
 
+
+
 class TemporaryDrawer extends React.Component {
   state = {
-    left: false
+    left: false,
+    showFooter: true
   };
 
   toggleDrawer = (side, open) => () => {
     this.setState({
-      [side]: open
+      [side]: open,
+      curr: ""
     });
   };
+
+  onClose() {
+    this.setState({ showFooter: false });
+  }
 
   render() {
     const { classes } = this.props;
 
     const sideList = (
       <div className={classes.list}>
-        <List component="nav">
+        <List
+          component="nav"
+          subheader={<ListSubheader component="div">Categories</ListSubheader>}
+        >
           <ListItem
             button
-            onClick={() => this._timeline.retrievePostsByCategory("sexist")}
+            onClick={() => {
+              this.state.curr = "sexist";
+              this._timeline.retrievePostsByCategory("sexist");
+            }}
           >
             <ListItemText primary="Sexist" />
           </ListItem>
-          <ListItem button onClick={() => this._timeline.retrievePostsByCategory("racist")}>
+          <ListItem
+            button
+            onClick={() => {
+              this.state.curr = "racist";
+              this._timeline.retrievePostsByCategory("racist");
+            }}
+          >
             <ListItemText primary="Racist" />
           </ListItem>
-          <ListItem button onClick={() => this._timeline.retrievePostsByCategory("dumb")}>
+          <ListItem
+            button
+            onClick={() => {
+              this.state.curr = "dumb";
+              this._timeline.retrievePostsByCategory("dumb");
+            }}
+          >
             <ListItemText primary="Dumb" />
           </ListItem>
-          <ListItem button onClick={() => this._timeline.retrievePostsByCategory("aa")}>
+          <ListItem
+            button
+            onClick={() => {
+              this.state.curr = "aa";
+              this._timeline.retrievePostsByCategory("aa");
+            }}
+          >
             <ListItemText primary="Anti-American" />
           </ListItem>
-          <ListItem button onClick={() => this._timeline.retrievePostsByCategory("ae")}>
+          <ListItem
+            button
+            onClick={() => {
+              this.state.curr = "ae";
+              this._timeline.retrievePostsByCategory("ae");
+            }}
+          >
             <ListItemText primary="Anti-Environment" />
           </ListItem>
+          <Divider />
+          <ListItem
+            button
+            onClick={() => {
+              this.state.curr = "";
+              this._timeline.retrievePosts("rating", "desc");
+            }}
+          >
+            <ListItemText primary="Dumb Shit Hall of Fame" />
+          </ListItem>
         </List>
-      </div>
-    );
-
-    const fullList = (
-      <div className={classes.fullList}>
-        <Divider />
       </div>
     );
 
@@ -101,6 +142,10 @@ class TemporaryDrawer extends React.Component {
             }}
           />
         </div>
+
+          {this.state.showFooter ? (
+            <Footer onClose={() => this.onClose()} />
+          ) : null}
       </div>
     );
   }

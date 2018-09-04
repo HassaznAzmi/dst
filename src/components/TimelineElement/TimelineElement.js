@@ -22,6 +22,7 @@ class TimelineElement extends React.Component {
 
           <ArrowUpward
             className="upvote"
+            title="Upvote"
             onClick={() => {
               this.props.eleData.rating += 1;
               postService.incrementRating(

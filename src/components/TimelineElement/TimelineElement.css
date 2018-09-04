@@ -35,16 +35,17 @@
   justify-content: space-between;
   width: 100%;
   font-size: 0.75rem;
-  margin-bottom: -1.4rem;
-  margin-left: -1rem;
+  margin: 0rem -1.2rem -1.2rem-1.2rem;
   align-items: flex-end;
   color: #002868;
+  font-family: "Source Sans Pro", serif;
 }
 
 .src {
   padding-left: 0.3rem;
   font-size: 0.75rem;
   color: #002868;
+  font-family: "Source Sans Pro", serif;
 }
 
 .tl-content-info > .vertical-timeline-element-description {

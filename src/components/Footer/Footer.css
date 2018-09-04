@@ -1,0 +1,33 @@
+#footer {
+   width: 95%;
+   background-color: #002868;
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   display: flex;
+   justify-content: space-between;
+   padding: 0rem 2rem;
+   align-items: center;
+}
+
+#question {
+    max-width: 40%;
+    font-family: "Merriweather", serif;
+    font-size: 1rem;
+    color: white;
+}
+
+#input {
+    min-width: 16rem;
+    background-color: white;
+    margin-left: 1rem;
+}
+
+#button {
+    background-color: #bf0a30;
+}
+
+#close {
+    cursor: pointer;
+    color: white;
+}

@@ -5,24 +5,24 @@ import {
 import TimelineElement from "../TimelineElement";
 import "react-vertical-timeline-component/style.min.css";
 import "./Timeline.css";
-import firebase from "../../services/firebase/firebase.js";
+import TopPost from "../TopPost";
 import * as postService from '../../services/posts/postService'
 
 class Timeline extends React.Component {
   constructor(){
     super();
     this.state = {
-      timelineData: []
+      timelineData: [{date: '', title: '',source: '', rating: 0, description: ''}]
     }
   }
 
-  retrievePosts() {
+  retrievePosts(order, dir) {
     let posts = [];
     let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
 
 
-    postService.getPosts().then((querySnapshot) => {
+    postService.getPosts(order, dir).then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         let eleData = doc.data();
         eleData.doc = doc;
@@ -39,9 +39,8 @@ class Timeline extends React.Component {
   retrievePostsByCategory(cat) {
     let posts = [];
     let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    console.log('in cat');
 
-    postService.getPosts().then((querySnapshot) => {
+    postService.getPosts('date', 'desc').then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
           let eleData = doc.data();
           if ( eleData.category.includes(cat)) {
@@ -56,7 +55,7 @@ class Timeline extends React.Component {
   }
 
   componentDidMount() {
-    this.retrievePosts();
+    this.retrievePosts('date', 'desc');
   };
 
   render() {
@@ -65,6 +64,8 @@ class Timeline extends React.Component {
 
     return (
       <div>
+        <TopPost eleData={this.state.timelineData[0]} />
+
         <VerticalTimeline>
           {this.state.timelineData.map(eleData => (
             <TimelineElement eleData={eleData} key={eleData.title} />
