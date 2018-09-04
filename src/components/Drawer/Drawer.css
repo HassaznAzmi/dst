@@ -1,0 +1,7 @@
+#drawer-container {
+    display: flex;
+    justify-content: flex-start;
+    position: fixed;
+    left: 0;
+    top: 0;
+}

@@ -1,0 +1,65 @@
+.vertical-timeline-element-content {
+  background-color: #bf0a30;
+  color: white;
+}
+
+.tl-content-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.tl-content-img {
+  max-width: 180px;
+  max-height: 130px;
+  object-fit: cover;
+}
+
+.tl-content-container > .upvote {
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  font-size: 2rem;
+  background-color: #002868;
+  border-radius: 100px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.tl-content-info {
+  flex: 1;
+}
+
+.tl-content-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.75rem;
+  margin-bottom: -1.4rem;
+  margin-left: -1rem;
+  align-items: flex-end;
+  color: #002868;
+}
+
+.src {
+  padding-left: 0.3rem;
+  font-size: 0.75rem;
+  color: #002868;
+}
+
+.tl-content-info > .vertical-timeline-element-description {
+  color: white;
+  font-family: "Source Sans Pro", serif;
+}
+
+.tl-content-info > .vertical-timeline-element-subtitle {
+  color: white;
+  margin-bottom: 1rem;
+  font-family: "Merriweather", serif;
+}
+
+.tl-content-info > .vertical-timeline-element-title {
+  color: white;
+  margin-bottom: 1rem;
+  font-family: "Merriweather", serif;
+}
